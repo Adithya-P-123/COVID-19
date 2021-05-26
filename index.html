@@ -9,6 +9,48 @@
 		body{
 			background-image: linear-gradient(to bottom right, rgb(0,0,0), rgb(0,0,255));
 		}
+		.loader{
+		left: 50%;
+		top: 50%;
+		position: absolute;
+		z-index: 1;
+		margin: -76px 0px 0px -76px;
+		border-width: 16px;
+		border-style: solid;
+		border-color: lightgrey;
+		border-radius: 50%;
+		border-top: 16px solid blue;
+		width: 180px;
+		height: 180px;
+		animation: spin 2s ease infinite;
+	}
+	@keyframes spin{
+		0%{
+			transform: rotate(0deg);
+		}
+		100%{
+			transform: rotate(360deg);
+		}
+	}
+	.animate-bottom{
+		position: relative;
+		animation-name: anime;
+		animation-duration: 5s;
+	}
+	@keyframes anime{
+		from{
+			bottom: -100px;
+			opacity: 0;
+		}
+		to{
+			bottom: 0;
+			opacity: 1;
+		}
+	}
+	#one{
+		display: none;
+		text-align: center;
+	}
 		h1{
 			font-family: Broadway;
 			text-align: center;
@@ -83,7 +125,9 @@
 	}
 	</style>
 </head>
-<body>
+<body onload="fun()">
+	<div class="loader" id="load"></div>
+	<div style="display: none;" id="one" class="animate_bottom">
 <div id="sidenav" class="side_nav">
 		<a href="javascript:void(0)" class="close" onclick="closeNav()">
 		&times;
@@ -99,6 +143,16 @@
 	<iframe src="https://www.worldometers.info/coronavirus/" style="height: 500px; width: 1515px; padding:  3px;"></iframe>
 	<iframe src="https://www.youtube.com/embed/7z0kzYpuqhw" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen; style="height: 500px; width: 1515px; padding: 5px; border: groove black 5px;"></iframe>
 	<script type="text/javascript">
+		var a;
+		function fun()
+	{
+		a = setTimeout(showPage, 3000);
+	}
+	function showPage()
+	{
+		document.getElementById('load').style.display = "none";
+		document.getElementById('one').style.display = "block";
+	}
 		function openNav()
 		{
 		document.getElementById('sidenav').style.width = "100%";
